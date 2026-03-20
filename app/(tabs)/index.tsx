@@ -1,5 +1,5 @@
-import TodoListView from '@/src/views/todo-list-view';
+import LoginScoreView from '@/src/views/login-score-view';
 
 export default function HomeScreen() {
-  return <TodoListView />;
+  return <LoginScoreView />;
 }

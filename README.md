@@ -2,6 +2,12 @@
 
 Base project dùng Expo Router, tổ chức theo mô hình MVC và lưu trữ cục bộ bằng SQLite.
 
+## Chức năng hiện có
+
+- Login bằng bảng `accounts`.
+- Xem thông tin sinh viên và điểm theo bảng `students`, `scores`.
+- Màn hình chính: `app/(tabs)/index.tsx`.
+
 ## Chạy dự án
 
 ```bash
@@ -14,25 +20,37 @@ npx expo start
 ```text
 src/
    models/
-      todo.ts
+      account.ts
+      student.ts
+      score.ts
    services/
       database.ts
-      todo-repository.ts
+      account-repository.ts
+      student-repository.ts
+      score-repository.ts
    controllers/
-      todo-controller.ts
+      auth-controller.ts
+      score-controller.ts
    views/
-      todo-list-view.tsx
+      login-score-view.tsx
 ```
 
-- **Model**: Định nghĩa kiểu dữ liệu (`Todo`).
+- **Model**: Định nghĩa kiểu dữ liệu (`Account`, `Student`, `Score`).
 - **Service/Repository**: Làm việc trực tiếp với SQLite (khởi tạo DB + truy vấn CRUD).
 - **Controller**: Chứa nghiệp vụ và validate input.
 - **View**: Màn hình React Native gọi controller để hiển thị và thao tác dữ liệu.
 
-## Màn hình mẫu
+## Schema SQLite
 
-- `app/(tabs)/index.tsx` đang mount `TodoListView` để demo MVC + SQLite.
-- Có sẵn chức năng thêm, đổi trạng thái hoàn thành, xoá công việc.
+- `accounts(username, password, role)`
+- `students(code, name, className)`
+- `scores(id AUTOINCREMENT, codeStudent, subject, score)`
+
+## Dữ liệu mẫu
+
+- Account sinh viên: `s001 / 123456`
+- Account admin: `admin / admin123`
+- Sinh viên mẫu: `s001 - Nguyen Van A - SE1701`
 
 ## Mở rộng
 
